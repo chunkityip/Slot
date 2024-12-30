@@ -16,19 +16,49 @@
 
 const prompt = require("prompt-sync")(); // Import thrid part library call prompt-sunc
 
-// public void deposit()
-const deposit = () => {
-    while (true) {
-        const depositAmout = prompt("Enter a deposit amount: ");
-        const numberDepositAmount = parseFloat(depositAmout);  // parseFlot is build in function to change String to number
+const ROWS = 3;
+const COLS = 3;
 
-        if (isNaN(numberDepositAmount) || numberDepositAmount <= 0) { //isNan() is build in function
+const SYMBOLS_COUNT = {
+    "A" : 2,
+    "B" : 4,
+    "C" : 6,
+    "D" : 8
+}
+
+const SYMBOLS_VALUES = {
+    "A": 5,
+    "B": 4,
+    "C": 3,
+    "D": 2
+}
+
+
+// public void deposit()
+/**
+ * Create a function call deposit
+ * 1 . Loop over in this function
+ * 2. Create a user input call depositAmount and display "Enter a deposit amount: "
+ * 3. Convert depositAmount as String to number call numberDepositAmount
+ * 4. If numberDepositAmount not a number or numberDepositAmount smaller or equal to 0
+ * 5. display "Invalid deposit amount, try again."
+ * 6. else , return numberDepositAmount
+ * 
+ */
+const deposit= () => {
+    while (true) {
+        const depositAmount = prompt("Enter a deposit amount: ");
+        numberDepositAmount = parseFloat(depositAmount);
+
+        if (isNaN(numberDepositAmount) || numberDepositAmount <= 0) {
             console.log("Invalid deposit amount, try again.")
         } else {
             return numberDepositAmount;
         }
     }
 };
+
+
 
 const getNumberOfLines = () => {
     while (true) {
@@ -43,6 +73,19 @@ const getNumberOfLines = () => {
     }
 };
 
+const getBet = (balance, lines) => {
+    while (true) {
+        const bet = prompt("Enter the total bet: ");
+        const numberBet = parseFloat(bet);
+
+        if (isNaN(numberBet) || numberBet <= 0 || numberBet > balance / lines) {
+            console.log("Invalid bet, try again.");
+        } else {
+            return numberBet;
+        }
+    }
+};
+
 
 
 /**
@@ -50,6 +93,7 @@ Scanner scanner = new Scanner(System.in);
 System.out.print("Enter a deposit amount: ");
 String depositAmount = scanner.nextLine();
  */
-const depositAmount = deposit();
+let balance = deposit();
 const numberofLines = getNumberOfLines();
+const get = getBet(balance, numberofLines);
 
