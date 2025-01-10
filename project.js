@@ -33,7 +33,16 @@ const SYMBOLS_VALUES = {
     "D": 2
 }
 
+const spin = () => {
+    const symbols = [];
+    for (const [symbol, count] of Object.entries(SYMBOLS_COUNT)) {
+      for (let i = 0; i < count; i++) {
+        symbols.push(symbol);
+      }
+    }
+};
 
+spin();
 // public void deposit()
 /**
  * Create a function call deposit
@@ -93,7 +102,7 @@ const getNumberOfLines = () => {
 
 const getBet = (balance, lines) => {
     while (true) {
-        const bet = prompt("Enter the total bet: ");
+        const bet = prompt("Enter the bet per line: ");
         const numberBet = parseFloat(bet);
 
         if (isNaN(numberBet) || numberBet <= 0 || numberBet > balance / lines) {
