@@ -37,7 +37,7 @@ const SYMBOLS_VALUES = {
 // public void deposit()
 /**
  * Create a function call deposit
- * 1 . Loop over in this function
+ * 1. Loop over in this function
  * 2. Create a user input call depositAmount and display "Enter a deposit amount: "
  * 3. Convert depositAmount as String to number call numberDepositAmount
  * 4. If numberDepositAmount not a number or numberDepositAmount smaller or equal to 0
@@ -58,8 +58,15 @@ const deposit= () => {
     }
 };
 
-
-
+/**
+ * Create a function call getNumberOfLines
+ * 1. Loop over in this function
+ * 2. Create a user input call lines and display "Enter the number of lines to bet on (1 - 3): "
+ * 3. Convert lines as String to number call numberOfLines
+ * 4. if numberOfLines not a number or numberOfLines smaller or equal to 0
+ * 5. display "Invalid deposit amount, try again."
+ * 6. else , return numberofLines
+ */
 const getNumberOfLines = () => {
     while (true) {
         const lines = prompt("Enter the number of lines to bet on (1 - 3): ");
@@ -72,6 +79,17 @@ const getNumberOfLines = () => {
         }
     }
 };
+
+/**
+ * Create a function call getBet with two promoter : balance and lines
+ * 1. Loop over in this function
+ * 2. Create a user input call bet and display "Enter the total bet: "
+ * 3. Convert numberBet as String to number call numberBet
+ * 4. if numberBet not a number or numberBet smaller or equal to 0 or numberBet bigger than balance / lines
+ * 5. display "Invalid bet, try again."
+ * 6. else , return numberBet
+ * 
+ */
 
 const getBet = (balance, lines) => {
     while (true) {
