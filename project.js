@@ -37,7 +37,7 @@ const SYMBOLS_VALUES = {
 // public void deposit()
 /**
  * Create a function call deposit
- * 1 . Loop over in this function
+ * 1. Loop over in this function
  * 2. Create a user input call depositAmount and display "Enter a deposit amount: "
  * 3. Convert depositAmount as String to number call numberDepositAmount
  * 4. If numberDepositAmount not a number or numberDepositAmount smaller or equal to 0
@@ -58,7 +58,16 @@ const deposit= () => {
     }
 };
 
-
+/**
+ * Create a function call getNumberOfLines
+ * 1. Loop over in this function
+ * 2. Create a user input call lines and display "Enter the number of lines to bet on (1 - 3): "
+ * 3. Convert lines as String to number call numberofLines
+ * 4. If numberofLines not a number or numberofLines smaller or equal to 0 or numberofLines bigger then 3
+ * 5. display "Invalid numver of lines, try again."
+ * 6. else , return numberofLines
+ * 
+ */
 
 const getNumberOfLines = () => {
     while (true) {
