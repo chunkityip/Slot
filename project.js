@@ -33,7 +33,27 @@ const SYMBOLS_VALUES = {
     "D": 2
 }
 
+const spin = () => {
+    const symbols = [];
+    for (const [symbol, count] of Object.entries(SYMBOLS_COUNT)) {
+      for (let i = 0; i < count; i++) {
+        symbols.push(symbol);
+      }
+    }
+    const reels = [[], [], []];
+    for (let i = 0; i< COLS; i++) {
+        const reelSymbols = [...symbols];
+        for (let j = 0; j < ROWS; j++) {
+            const randomIndex = Math.floor(Math.random() * reelSymbols.length);
+                const selectedSymbol = reelSymbols[randomIndex];
+                reels[i].push(selectedSymbol);
+                reelSymbols.splice(randomIndex, 1);
+        }
+    }
+    return reels;
+};
 
+spin();
 // public void deposit()
 /**
  * Create a function call deposit
@@ -82,9 +102,20 @@ const getNumberOfLines = () => {
     }
 };
 
+/**
+ * Create a function call getBet with two promoter : balance and lines
+ * 1. Loop over in this function
+ * 2. Create a user input call bet and display "Enter the total bet: "
+ * 3. Convert numberBet as String to number call numberBet
+ * 4. if numberBet not a number or numberBet smaller or equal to 0 or numberBet bigger than balance / lines
+ * 5. display "Invalid bet, try again."
+ * 6. else , return numberBet
+ * 
+ */
+
 const getBet = (balance, lines) => {
     while (true) {
-        const bet = prompt("Enter the total bet: ");
+        const bet = prompt("Enter the bet per line: ");
         const numberBet = parseFloat(bet);
 
         if (isNaN(numberBet) || numberBet <= 0 || numberBet > balance / lines) {
