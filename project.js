@@ -116,6 +116,18 @@ spin();
  * 6. else , return numberDepositAmount
  * 
  */
+
+/**
+ * Create a function call getNumberOfLines
+ * 1. Loop over in this function
+ * 2. Create a user input call lines and display "Enter the number of lines to bet on (1 - 3): "
+ * 3. Convert lines as String to number call numberofLines
+ * 4. If numberofLines not a number or numberofLines smaller or equal to 0 or numberofLines bigger then 3
+ * 5. display "Invalid numver of lines, try again."
+ * 6. else , return numberofLines
+ * 
+ */
+
 const deposit= () => {
     while (true) {
         const depositAmount = prompt("Enter a deposit amount: ");
@@ -177,18 +189,38 @@ const getBet = (balance, lines) => {
     }
 };
 
-
-
 /**
 Scanner scanner = new Scanner(System.in);
 System.out.print("Enter a deposit amount: ");
 String depositAmount = scanner.nextLine();
  */
-let balance = deposit();
-const numberofLines = getNumberOfLines();
-const reels = spin();
-const rows = transpose(reels);
-const bet = getBet(balance, numberofLines);
-printRows(rows);
-const winnings = getWinnings(rows , bet , numberofLines);
-console.log("You won, $" + winnings.toString());
+
+const game = () => {
+    let balance = deposit();
+  
+    while (true) {
+      console.log("You have a balance of $" + balance);
+      const numberOfLines = getNumberOfLines();
+      const bet = getBet(balance, numberOfLines);
+      balance -= bet * numberOfLines;
+      const reels = spin();
+      const rows = transpose(reels);
+      printRows(rows);
+      const winnings = getWinnings(rows, bet, numberOfLines);
+      balance += winnings;
+      console.log("You won, $" + winnings.toString());
+  
+      if (balance <= 0) {
+        console.log("You ran out of money!");
+        break;
+      }
+  
+      const playAgain = prompt("Do you want to play again (y/n)? ");
+  
+      if (playAgain != "y") break;
+    }
+  };
+  
+  game();
+
+
